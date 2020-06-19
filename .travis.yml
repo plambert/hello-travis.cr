@@ -7,7 +7,7 @@ script:
   # - crystal spec
   - crystal tool format --check
   - shards install
-  - shards build --release -o "${NAME}-${TRAVIS_OS_NAME}"
+  - shards build --release -o "${NAME}-${TRAVIS_OS_NAME}" "$NAME"
   - "bin/${NAME}-${TRAVIS_OS_NAME}"
 
 deploy:
