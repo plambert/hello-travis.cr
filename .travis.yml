@@ -1,4 +1,7 @@
 language: crystal
+os:
+- linux
+- osx
 env:
   NAME: hello-travis
 script:
