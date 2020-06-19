@@ -1,24 +1,17 @@
 language: crystal
-
 env:
   NAME: hello-travis
-
 script:
-  # - crystal spec
-  - crystal tool format --check
-  - shards install
-  - shards build "$NAME" --release --error-trace -s -p -t
-  - mv -f -v "bin/${NAME}" "bin/${NAME}-${TRAVIS_OS_NAME}"
-  - "bin/${NAME}-${TRAVIS_OS_NAME}"
-
+- crystal tool format --check
+- shards install
+- shards build "$NAME" --release --error-trace -s -p -t
+- mv -f -v "bin/${NAME}" "bin/${NAME}-${TRAVIS_OS_NAME}"
+- bin/${NAME}-${TRAVIS_OS_NAME}
 deploy:
   provider: releases
   api_key:
-    secure: nNBgtmGz1R0taR9gipFBkNTtwE5OGgx03W1z3klSX6Hs3tiCKIq9uxmzyuqUC59/+5cSXQNH7NQf3OrRNuZH9LJytt2V3T2T7EfqI3eCwetnZCipiZx5L+Noj3WiMc5mNyN8J6LG5PWl7i55EnNq3ouR7C25ANXlBF3wWMBbI88uLRvX8BxPGSS/15SlcuULwbLCBYGSXNeDqCm2c3If51z0Fq2er0PqyC1tD+ssXiGRlM3EmuLRT4Of4cVwz6zTENhVGzHWJr/pQLpDlepQyBvOk2/OLtfffFUyk+RwshEkdAi7hVJsu/DcKPLg+uwXBHMm4vkG82uARig2AJB5J4JPOh3x6CFdHzjl3FhTctv3lGmGuCFmJQHu8LhIkupo/FrfySNUmjh8iiaM5b7Y+7hSB1qE036yOT6+ixCJgrGV4XXzCOw9KBA0H8azWP416zbIOtYiihUDj+Wnaq8uwkT8Zht95sOBqbPyQyVvwYvAV+4BoPgN1n6vSzz+RzpybEReEcEwIQz9EJgqEeaCeU0ws8eWpYPoR8eHcI6xeYAj2o50IKEQlZVdwA55Hx3WFGl072c7YhpS3bSKcLRWUdlQ1VZopqmt8FDToXl28GTputEhjCPBrsfA4IvykEHJgSUT2/i8s3JQseOIXbPNM3kOpsOmgP5mDcKMqKimrZo=
+    secure: cFrx9s62w51XdiSsww4OtjSp6+IR/iIqVYyC6arydtLBWkZ8tmJ6gPZB+DsOHJZ9C4gXImprLZsBfjeLyZ5kBX3a5TcD0ONykv3rF2XEtOcfh9ru6pOfW1I2B1r4ULH39G4XGjmABQlnt5gmDPXIl0h7vDxXvRraSAwqmH5RYfRHbuUkCiYBazGRvrr87HTyCjKJ59l33Kv180cbly6OovOJH7Xzc1Ff6hNFgb/suWtRHxCj8i0uT7pCACeXH8IAZOLTLtwIaiqKaXcDQxQdBZnANA/XZGLKkMYfxfEtZp8bOKr+PS7ywOzlN+BpJv+YJhfG3lb+dV1VeZ0U07ASTya4923hPQAfw/gc0fY6636uWZJSV6LG6TlCHX1xJyMeqsP70ZMECWNdq6Z6INWPph/2aiK3AVa9tnmz8fwu6zXKUd9GE/HSsI91g+3bcqT4n1g/F0Xh9weepAx0lSIvcjmy9NIwZ4Kn6a217ZMcC2Dm43SMmD/+mvfdfF66CkgzgSYZOnqwflGJjMO+BCq6AmLkjRFcc2J0fTUPoGLV6M4hxm+3quJV2RI02wr8LOTrxwAlqO/j0YDcelk7IKPxlxiWqZqMSY9y+p/poR+BAZA0p14y9Rg+eivFwMDDE6LR2fVY4DzJ6XQIbL4O3eFyM+R4EEcPShMVB42YpR4GSm4=
   file: "bin/${NAME}-${TRAVIS_OS_NAME}"
-  prerelease: true
   on:
-    # tags: true
     repo: plambert/hello-travis.cr
   skip_cleanup: 'true'
-  overwrite: true
