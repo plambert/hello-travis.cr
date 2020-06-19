@@ -4,6 +4,7 @@ os:
 - osx
 env:
   NAME: hello-travis
+  LDFLAGS: -L/usr/local/opt/openssl/lib
 script:
 - crystal tool format --check
 - shards install
