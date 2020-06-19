@@ -5,4 +5,4 @@ script:
   - crystal tool format --check
   - shards install
   - shards build --release
-  - bin/hello-world
+  - bin/hello-travis
