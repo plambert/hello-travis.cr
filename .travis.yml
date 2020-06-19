@@ -7,7 +7,8 @@ script:
   # - crystal spec
   - crystal tool format --check
   - shards install
-  - crystal build "src/${NAME}.cr" --release --error-trace -s -p -t -o "bin/${NAME}-${TRAVIS_OS_NAME}" 
+  - shards build "$NAME" --release --error-trace -s -p -t
+  - mv -f -v "bin/${NAME}" "bin/${NAME}-${TRAVIS_OS_NAME}"
   - "bin/${NAME}-${TRAVIS_OS_NAME}"
 
 deploy:
